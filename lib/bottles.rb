@@ -13,10 +13,10 @@ class Bottles
 
   def verse(number)
     actual_bottle = bottle_number(number)
-    next_bottle = bottle_number(number - 1)
+    remaining_bottle = bottle_number(number - 1)
 
     "#{actual_bottle.quantity.capitalize} #{actual_bottle.container} of beer on the wall, #{actual_bottle.quantity} #{actual_bottle.container} of beer.\n" +
-    "#{actual_bottle.action}, #{next_bottle.quantity} #{next_bottle.container} of beer on the wall.\n"
+    "#{actual_bottle.action}, #{remaining_bottle.quantity} #{remaining_bottle.container} of beer on the wall.\n"
   end
 
   def bottle_number(number)
