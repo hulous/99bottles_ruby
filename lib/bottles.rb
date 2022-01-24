@@ -1,3 +1,5 @@
+require_relative './bottle_number'
+
 class Bottles
   def song
     verses(99, 0)
@@ -10,29 +12,14 @@ class Bottles
   end
 
   def verse(number)
-    "#{quantity(number).capitalize} #{container(number)} of beer on the wall, #{quantity(number)} #{container(number)} of beer.\n" +
-    "#{action(number)}, #{quantity(number - 1)} #{container(number-1)} of beer on the wall.\n"
+    actual_bottle = bottle_number(number)
+    next_bottle = bottle_number(number - 1)
+
+    "#{actual_bottle.quantity.capitalize} #{actual_bottle.container} of beer on the wall, #{actual_bottle.quantity} #{actual_bottle.container} of beer.\n" +
+    "#{actual_bottle.action}, #{next_bottle.quantity} #{next_bottle.container} of beer on the wall.\n"
   end
 
-  private
-
-  def action(number)
-    return 'Go to the store and buy some more' if number.zero?
-    return 'Take it down and pass it around' if number == 1
-
-    'Take one down and pass it around'
-  end
-
-  def quantity(number)
-    return 'no more' if number.zero?
-    return '99' if number.negative?
-
-    number.to_s
-  end
-
-  def container(number)
-    return 'bottle' if number == 1
-
-    'bottles'
+  def bottle_number(number)
+    BottleNumber.new(number)
   end
 end
