@@ -5,6 +5,12 @@ require_relative './six_pack'
 require_relative './song_verse'
 
 class Bottles
+  attr_reader :verse_template
+
+  def initialize(verse_template: SongVerse)
+    @verse_template = verse_template
+  end
+
   def song
     verses(99, 0)
   end
@@ -14,6 +20,6 @@ class Bottles
   end
 
   def verse(number)
-    SongVerse.new(number).lyrics
+    verse_template.lyrics(number)
   end
 end

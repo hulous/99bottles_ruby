@@ -1,15 +1,21 @@
 class SongVerse
-  attr_reader :number
+  def self.for(number)
+    new(BottleNumber.for(number))
+  end
 
-  def initialize(number)
-    @number = number
+  def self.lyrics(number)
+    self.for(number).lyrics
+  end
+
+  attr_reader :bottle_number, :remaining_bottle
+
+  def initialize(bottle_number)
+    @bottle_number = bottle_number
+    @remaining_bottle = bottle_number.successor
   end
 
   def lyrics
-    actual_bottle = BottleNumber.for(number)
-    remaining_bottle = actual_bottle.successor
-
-    "#{actual_bottle.quantity.capitalize} #{actual_bottle.container} of beer on the wall, #{actual_bottle.quantity} #{actual_bottle.container} of beer.\n" +
-    "#{actual_bottle.action}, #{remaining_bottle.quantity} #{remaining_bottle.container} of beer on the wall.\n"
+    "#{bottle_number.quantity.capitalize} #{bottle_number.container} of beer on the wall, #{bottle_number.quantity} #{bottle_number.container} of beer.\n" +
+    "#{bottle_number.action}, #{remaining_bottle.quantity} #{remaining_bottle.container} of beer on the wall.\n"
   end
 end
