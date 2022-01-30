@@ -4,14 +4,14 @@ require_relative './one_bottle'
 require_relative './six_pack'
 require_relative './song_verse'
 
-class Bottles
+class Song
   attr_reader :verse_template
 
   def initialize(verse_template: SongVerse)
     @verse_template = verse_template
   end
 
-  def song
+  def lyrics
     verses(99, 0)
   end
 
