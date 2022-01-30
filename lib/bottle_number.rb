@@ -5,6 +5,7 @@ class BottleNumber
     klass = case number
       when 0 then NoBottle
       when 1 then OneBottle
+      when 6 then SixPack
       else
         BottleNumber
     end

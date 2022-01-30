@@ -1,6 +1,7 @@
 require_relative './bottle_number'
 require_relative './no_bottle'
 require_relative './one_bottle'
+require_relative './six_pack'
 
 class Bottles
   def song
