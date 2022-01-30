@@ -6,22 +6,33 @@ class BottleNumber
   end
 
   def action
-    return 'Go to the store and buy some more' if number.zero?
-    return 'Take it down and pass it around' if number == 1
+    return "Go to the store and buy some more" if number.zero?
 
-    'Take one down and pass it around'
+    "Take #{pronoun} down and pass it around"
+  end
+
+  def pronoun
+    return "it" if number == 1
+
+    "one"
   end
 
   def quantity
-    return 'no more' if number.zero?
-    return '99' if number.negative?
+    return "no more" if number.zero?
+    return "99" if number.negative?
 
     number.to_s
   end
 
   def container
-    return 'bottle' if number == 1
+    return "bottle" if number == 1
 
-    'bottles'
+    "bottles"
+  end
+
+  def successor
+    return 99 if number.zero?
+
+    number - 1
   end
 end
